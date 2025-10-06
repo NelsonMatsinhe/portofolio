@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+/* 🌈 Paleta de cores */
+:root {
+  --brand-500: #2563eb;
+  --accent-500: #06b6d4;
+
+  --text-strong: #0f172a;
+  --text: #1f2937;
+  --text-muted: #475569;
+
+  --surface: #f8fbff;
+  --surface-2: #eff6ff;
+  --border: #e2e8f0;
+
+  --focus: #22d3ee;
+}
+
+.dark :root, html.dark :root {
+  --text-strong: #f8fafc;
+  --text: #e5e7eb;
+  --text-muted: #94a3b8;
+  --surface: #0b1220;
+  --surface-2: #0f172a;
+  --border: #334155;
+}
+
+/* 🌐 Fundo global */
+body {
+  background: linear-gradient(to bottom, var(--surface), var(--surface-2));
+  overflow-x: hidden;
+}
+
+/* Utilitários */
+.surface-gradient {
+  background: linear-gradient(to bottom, var(--surface), var(--surface-2));
+}
+.surface-section {
+  background-color: var(--surface-2);
+}
+.bg-surface {
+  background-color: var(--surface);
+}
+.bg-card {
+  background-color: var(--surface-2);
+}
+
+/* ✨ Texto com gradiente */
+.gradient-text {
+  background: linear-gradient(90deg, var(--brand-500), var(--accent-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: var(--brand-500); /* Fallback */
+}
+
+/* Tipografia */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--brand-500);
+  font-weight: bold;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+.text-strong {
+  color: var(--text-strong);
+}
+.text-on-surface {
+  color: var(--text-strong);
+}
+.text-on-dark {
+  color: var(--text);
+}
+.text-muted {
+  color: var(--text-muted);
+}
+
+/* Blob decorativo */
+.hero-blob {
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  width: 100vw;
+  max-width: 32rem;
+  height: 100vw;
+  max-height: 32rem;
+  filter: blur(60px);
+  opacity: 0.18;
+  background: radial-gradient(closest-side, var(--accent-500), transparent),
+              radial-gradient(closest-side, var(--brand-500), transparent);
+  animation: floaty 12s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes floaty {
+  0% { transform: translateY(0px) translateX(0); }
+  100% { transform: translateY(-30px) translateX(10px); }
+}
+
+/* Cartões */
+.card-hover {
+  transition: transform 200ms, box-shadow 200ms, opacity 200ms;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+}
+
+/* Chips */
+.tag {
+  @apply px-3 py-1 rounded-full text-xs font-medium;
+  background-color: #eff6ff;
+  color: #1e3a8a;
+}
+
+/* Foco acessível */
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
