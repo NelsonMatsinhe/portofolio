@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, type JSX as ReactJSX } from "react";
 
 interface RevealProps {
   children: React.ReactNode;
-  as?: keyof jSX.IntrinsicElements;
+  as?: keyof ReactJSX.IntrinsicElements;
   className?: string;
   delayMs?: number;
 }

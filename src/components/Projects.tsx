@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { projects, type Project } from "../data";
 import Reveal from "./Reveal";
 import ProjectModal from "./ProjectModal";
