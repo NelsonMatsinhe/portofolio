@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nelsonmatsinhe.github.io/portofolio/sitemap.xml

@@ -1,81 +1,100 @@
+import { LazyMotion, domAnimation, m, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { useRef } from "react";
 import { siteInfo } from "../data";
-import Reveal from "./Reveal";
+import CustomCursor from "./CustomCursor";
+import MagneticButton from "./MagneticButton";
+import SplitText from "./SplitText";
+import SystemMap from "./SystemMap";
+
+const copyVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.11, delayChildren: 0.08 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 22, filter: "blur(4px)" },
+  visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+};
 
 export default function Hero() {
+  const reducedMotion = useReducedMotion();
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const heroScale = useTransform(scrollYProgress, [0, 0.8], [1, reducedMotion ? 1 : 0.975]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.75], [1, reducedMotion ? 1 : 0.82]);
+
+  const transition = reducedMotion
+    ? { duration: 0 }
+    : { duration: 0.72, ease: "easeOut" as const };
+
   return (
-    <section
-      id="hero"
-      className="relative min-h-screen flex items-center surface-gradient dark:from-gray-900 dark:to-gray-800 transition-colors overflow-hidden"
+    <LazyMotion features={domAnimation}>
+    <m.section
+      ref={heroRef}
+      id="top"
+      className="hero section-shell"
+      style={{ scale: heroScale, opacity: heroOpacity }}
     >
-      <div className="hero-blob" />
+      <div className="hero-grid">
+        <m.div
+          className="hero-status"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={transition}
+        >
+          <span className="status-dot" aria-hidden="true" />
+          <span>Disponível para oportunidades</span>
+        </m.div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <Reveal>
-            <p className="text-lg font-bold uppercase gradient-text">Bem-vindo!</p>
-          </Reveal>
+        <m.div
+          className="hero-copy"
+          variants={copyVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <m.p className="eyebrow" variants={itemVariants} transition={transition}>
+            <span className="eyebrow-line" aria-hidden="true" />
+            {siteInfo.role}
+          </m.p>
+          <m.h1 className="hero-name" variants={itemVariants} transition={{ ...transition, duration: reducedMotion ? 0 : 0.85 }}>
+            <SplitText text="Nelson" />
+            <span className="hero-name-indent"><SplitText text="Matsinhe" /></span>
+          </m.h1>
+          <m.p className="hero-lede" variants={itemVariants} transition={transition}>
+            Construo aplicações, plataformas e sistemas digitais que resolvem problemas reais.
+          </m.p>
+          <m.p className="hero-summary" variants={itemVariants} transition={transition}>
+            Trabalho entre Laravel, PHP, React e tecnologias web modernas — da interface que as pessoas usam à estrutura que mantém o produto fiável.
+          </m.p>
+          <m.p className="hero-stack" variants={itemVariants} transition={transition}>
+            Laravel <span>·</span> React <span>·</span> PHP <span>·</span> TypeScript
+          </m.p>
+          <m.div className="hero-actions" variants={itemVariants} transition={transition}>
+            <MagneticButton href="#work" primary>Ver projetos selecionados</MagneticButton>
+            <MagneticButton href={"mailto:" + siteInfo.email}>Entrar em contacto</MagneticButton>
+          </m.div>
+        </m.div>
 
-          <Reveal delayMs={80}>
-            <h1 className="text-4xl sm:text-6xl font-extrabold mt-2 leading-tight gradient-text">
-              Nelson Alexandre Matsinhe
-            </h1>
-          </Reveal>
+        <SystemMap reducedMotion={reducedMotion} />
 
-          <Reveal delayMs={120}>
-            <h2 className="text-2xl sm:text-3xl font-semibold text-accent mt-2">
-              Desenvolvedor Web | Full-Stack | React & Laravel
-            </h2>
-          </Reveal>
-
-          <Reveal delayMs={160}>
-            <p className="mt-4 text-lg leading-relaxed text-on-surface dark:text-on-dark max-w-xl">
-              Profissional de TI com mais de 3 anos de experiência em{" "}
-              <span className="font-semibold text-brand-500">desenvolvimento web</span> e{" "}
-              conhecimento em aplicações Mobile com React Native.  
-              Focado em criar soluções escaláveis, seguras e de alto desempenho, 
-              sempre priorizando a experiência do usuário e os resultados do cliente.
-            </p>
-          </Reveal>
-
-          <Reveal delayMs={240}>
-            <div className="mt-6 flex flex-wrap items-center gap-4">
-              <div className="flex items-center gap-3 text-base font-medium">
-                <a href={siteInfo.social.github} target="_blank" rel="noreferrer"
-                  className="text-on-surface dark:text-on-dark hover:text-indigo-600 dark:hover:text-indigo-400 transition">
-                  GitHub
-                </a>
-                <span className="text-muted">|</span>
-                <a href={siteInfo.social.linkedin} target="_blank" rel="noreferrer"
-                  className="text-on-surface dark:text-on-dark hover:text-indigo-600 dark:hover:text-indigo-400 transition">
-                  LinkedIn
-                </a>
-              </div>
-
-              <a href="/cv/curriculo.pdf" download
-                className="inline-flex items-center px-5 py-3 bg-indigo-600 text-white rounded-xl shadow hover:bg-indigo-700 transition-colors">
-                Baixar CV
-              </a>
-            </div>
-
-            <div className="mt-6 text-sm text-muted font-medium">
-              📍 {siteInfo.location} • Disponibilidade imediata
-            </div>
-          </Reveal>
+        <m.div
+          className="hero-footer"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ ...transition, delay: reducedMotion ? 0 : 0.85 }}
+        >
+          <span>Maputo, Mozambique</span>
+          <span>Scroll para explorar <span aria-hidden="true">↓</span></span>
+          <span>01 / 06</span>
+        </m.div>
+        <div className="hero-marquee" aria-hidden="true">
+          <div className="hero-marquee-track">Laravel <span>•</span> React <span>•</span> PHP <span>•</span> TypeScript <span>•</span> APIs <span>•</span> Digital products <span>•</span> Laravel <span>•</span> React <span>•</span> PHP <span>•</span> TypeScript <span>•</span> APIs <span>•</span> Digital products <span>•</span></div>
         </div>
-
-        <Reveal delayMs={120} className="flex justify-center">
-          <div className="relative transition-transform duration-500 hover:scale-105 w-full max-w-sm aspect-square">
-            <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-indigo-500/20 to-emerald-500/20 blur-md" />
-            <div className="relative rounded-full overflow-hidden shadow-xl ring-4 ring-gray-100 dark:ring-gray-800 w-full h-full">
-              <img
-                src="/profile.jpg"
-                alt="Foto de perfil de Nelson Matsinhe"
-                className="object-cover w-full h-full"
-              />
-            </div>
-          </div>
-        </Reveal>
       </div>
-    </section>
+    </m.section>
+    <CustomCursor />
+    </LazyMotion>
   );
 }
