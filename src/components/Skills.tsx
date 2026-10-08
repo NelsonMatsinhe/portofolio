@@ -5,8 +5,8 @@ export default function Skills() {
   return (
     <section id="approach" className="section-shell section-ink">
       <div className="section-heading section-heading-ink">
-        <Reveal><p className="eyebrow">03 — Atuação</p></Reveal>
-        <Reveal delayMs={60}><h2>O que faço</h2></Reveal>
+        <Reveal><p className="eyebrow">04 — Tecnologias</p></Reveal>
+        <Reveal delayMs={60}><h2>As ferramentas que utilizo para construir.</h2></Reveal>
       </div>
       <div className="capability-list">
         {capabilities.map((capability, index) => (

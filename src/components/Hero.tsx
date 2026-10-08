@@ -63,17 +63,22 @@ export default function Hero() {
             <span className="hero-name-indent"><SplitText text="Matsinhe" /></span>
           </m.h1>
           <m.p className="hero-lede" variants={itemVariants} transition={transition}>
-            Construo aplicações, plataformas e sistemas digitais que resolvem problemas reais.
+            Construo plataformas digitais que transformam operações complexas em produtos simples, rápidos e úteis.
           </m.p>
           <m.p className="hero-summary" variants={itemVariants} transition={transition}>
-            Trabalho entre Laravel, PHP, React e tecnologias web modernas — da interface que as pessoas usam à estrutura que mantém o produto fiável.
+            Full-Stack Developer especializado em Laravel, React, PHP e TypeScript, criando plataformas web, dashboards e sistemas internos para empresas e equipas.
           </m.p>
           <m.p className="hero-stack" variants={itemVariants} transition={transition}>
             Laravel <span>·</span> React <span>·</span> PHP <span>·</span> TypeScript
           </m.p>
           <m.div className="hero-actions" variants={itemVariants} transition={transition}>
-            <MagneticButton href="#work" primary>Ver projetos selecionados</MagneticButton>
-            <MagneticButton href={"mailto:" + siteInfo.email}>Entrar em contacto</MagneticButton>
+            <MagneticButton href="#work" primary>Ver projetos</MagneticButton>
+            <MagneticButton href={"mailto:" + siteInfo.email}>Falar sobre um projeto</MagneticButton>
+          </m.div>
+          <m.div className="hero-socials" variants={itemVariants} transition={transition}>
+            <a href={siteInfo.social.github} target="_blank" rel="noreferrer">GitHub ↗</a>
+            <a href={siteInfo.social.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            <a href={siteInfo.social.whatsapp} target="_blank" rel="noreferrer">WhatsApp ↗</a>
           </m.div>
         </m.div>
 
@@ -90,7 +95,7 @@ export default function Hero() {
           <span>01 / 06</span>
         </m.div>
         <div className="hero-marquee" aria-hidden="true">
-          <div className="hero-marquee-track">Laravel <span>•</span> React <span>•</span> PHP <span>•</span> TypeScript <span>•</span> APIs <span>•</span> Digital products <span>•</span> Laravel <span>•</span> React <span>•</span> PHP <span>•</span> TypeScript <span>•</span> APIs <span>•</span> Digital products <span>•</span></div>
+          <div className="hero-marquee-track">Laravel <span>•</span> React <span>•</span> PHP <span>•</span> TypeScript <span>•</span> APIs <span>•</span> Produtos digitais <span>•</span> Laravel <span>•</span> React <span>•</span> PHP <span>•</span> TypeScript <span>•</span> APIs <span>•</span> Produtos digitais <span>•</span></div>
         </div>
       </div>
     </m.section>

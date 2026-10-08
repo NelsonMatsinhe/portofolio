@@ -2,24 +2,17 @@ import type { Project } from "../data";
 
 interface ProjectVisualProps { project: Project; }
 
-const visualLabels: Record<Project["visual"], string> = {
-  public: "Informação pública",
-  marketplace: "Interface de marketplace",
-  commerce: "Sistema de e-commerce",
-  mobile: "Aplicação mobile",
-  yard: "Sistema operacional",
-};
-
 export default function ProjectVisual({ project }: ProjectVisualProps) {
   return (
-    <div className={"project-visual project-visual-" + project.visual} aria-label={project.title + " project placeholder"}>
-      <div className="visual-topline"><span>{visualLabels[project.visual]}</span><span>Asset pendente</span></div>
-      <div className="visual-frame">
-        <div className="visual-window-bar"><span /><span /><span /></div>
-        <div className="visual-lines"><i /><i /><i /><i /></div>
-        <strong>{project.title}</strong>
-      </div>
-      <p>Screenshot real do projeto pode ser colocado aqui.</p>
+    <div className={"project-visual project-visual-" + project.visual} data-asset-dir={project.assetDir} aria-label={"Representação visual de " + project.title}>
+      <div className="visual-topline"><span>{project.type}</span><span>{project.number} / 06</span></div>
+      {project.image ? <img className="project-screenshot" src={project.image} alt={"Ecrã de " + project.title} loading="lazy" /> : (
+        <div className="visual-frame" aria-hidden="true">
+          <div className="visual-window-bar"><span /><span /><span /></div>
+          <div className="visual-lines"><i /><i /><i /><i /></div>
+          <strong>{project.title}</strong>
+        </div>
+      )}
     </div>
   );
 }

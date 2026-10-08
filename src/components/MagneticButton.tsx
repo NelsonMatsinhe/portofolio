@@ -35,6 +35,7 @@ export default function MagneticButton({ href, children, primary = false }: Magn
       ref={ref}
       href={href}
       className={"hero-cta magnetic-button " + (primary ? "hero-cta-primary" : "")}
+      data-analytics-event={primary ? "view-projects" : "start-project-conversation"}
       style={{ x: springX, y: springY }}
       onPointerMove={handleMove}
       onPointerLeave={reset}

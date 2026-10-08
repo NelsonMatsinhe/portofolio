@@ -5,7 +5,7 @@ export default function About() {
   return (
     <section id="about" className="section-shell section-light">
       <div className="section-heading">
-        <Reveal><p className="eyebrow">04 — Sobre</p></Reveal>
+        <Reveal><p className="eyebrow">06 — Sobre</p></Reveal>
         <Reveal delayMs={60}><h2>Um developer prático para produtos que precisam de funcionar no mundo real.</h2></Reveal>
       </div>
       <div className="about-layout">

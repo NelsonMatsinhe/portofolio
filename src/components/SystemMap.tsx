@@ -60,7 +60,7 @@ export default function SystemMap({ reducedMotion }: SystemMapProps) {
       role="img"
       aria-label="Mapa de sistemas com ligações entre React, Laravel, API e PHP"
     >
-      <div className="network-caption"><span>System map</span><span>NM / 01</span></div>
+      <div className="network-caption"><span>Mapa do sistema</span><span>NM / 01</span></div>
       <svg className="network-lines" viewBox="0 0 100 100" aria-hidden="true" preserveAspectRatio="none">
         {edges.map((edge) => {
           const isActive = activeNode === edge.id;
@@ -97,7 +97,7 @@ export default function SystemMap({ reducedMotion }: SystemMapProps) {
         <span className="core-ring core-ring-one" aria-hidden="true" />
         <span className="core-ring core-ring-two" aria-hidden="true" />
         <span className="core-dot" aria-hidden="true" />
-        <b>SYSTEMS</b>
+        <b>SISTEMAS</b>
       </m.div>
       {nodes.map((node, index) => (
         <m.button
@@ -129,7 +129,7 @@ export default function SystemMap({ reducedMotion }: SystemMapProps) {
       >
         <img src="/portofolio/Nelson%20Matsinhe%20Programador.webp" alt="" width="4162" height="3264" />
       </m.div>
-      <div className="network-footnote">Interfaces / logic / delivery</div>
+      <div className="network-footnote">Interfaces / lógica / entrega</div>
     </m.div>
   );
 }

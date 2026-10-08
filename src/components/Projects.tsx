@@ -20,7 +20,7 @@ export default function Projects() {
               <div className="project-content">
                 <h3>{project.title}</h3><p>{project.short}</p>
                 <div className="project-tags" aria-label="Tecnologias utilizadas">{project.tech.map((technology) => <span key={technology}>{technology}</span>)}</div>
-                <button className="text-link" type="button" onClick={() => setSelectedProject(project)}>Ver projeto <span aria-hidden="true">↗</span></button>
+                <button className="text-link" type="button" data-analytics-event={"open-project-" + project.id} onClick={() => setSelectedProject(project)}>Ver projeto <span aria-hidden="true">↗</span></button>
               </div>
               <ProjectVisual project={project} />
             </article>
