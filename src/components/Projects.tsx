@@ -13,21 +13,21 @@ export default function Projects() {
   return (
     <section id="work" className="section-shell work-section">
       <div className="section-heading work-heading">
-        <Reveal><p className="eyebrow">02 — Projetos selecionados</p></Reveal>
-        <Reveal delayMs={60}><h2>Ideias e necessidades transformadas em produtos digitais.</h2></Reveal>
+        <Reveal><p className="eyebrow">Trabalho</p></Reveal>
+        <Reveal delayMs={60}><h2>Projetos</h2><p className="section-intro">Portal de informação, marketplace, comércio eletrónico e aplicação móvel.</p></Reveal>
       </div>
       <div className="project-list featured-project-list">
         {featuredProjects.map((project, index) => (
           <Reveal key={project.id} delayMs={index * 40}>
-            <article className={"project-row featured-project-row project-row-" + project.id + (index % 2 === 1 ? " project-row-reverse" : "")}>
-              <div className="project-meta"><span className="project-number">{project.number}</span><span className="project-type">{project.type}</span></div>
+            <article className={"featured-project-row" + (index % 2 === 1 ? " project-row-reverse" : "")}>
               <div className="project-content">
+                <p className="project-type">{project.type}</p>
                 <h3>{project.title}</h3><p>{project.short}</p>
                 <p className="project-contribution">{project.contribution}</p>
-                {project.tech.length > 0 && <div className="project-tags" aria-label="Tecnologias principais">{project.tech.map((item) => <span key={item}>{item}</span>)}</div>}
+                {project.tech.length > 0 && <p className="project-tech">{project.tech.join(" · ")}</p>}
                 <div className="project-actions">
-                  <button className="text-link" type="button" aria-haspopup="dialog" data-analytics-event={"open-project-" + project.id} onClick={() => setSelectedProject(project)}>Ver projeto <span aria-hidden="true">↗</span></button>
-                  {project.url && <a className="project-live-link" href={project.url} target="_blank" rel="noreferrer">Explorar plataforma <span aria-hidden="true">↗</span></a>}
+                  <button className="text-link" type="button" aria-haspopup="dialog" onClick={() => setSelectedProject(project)}>Detalhes <span aria-hidden="true">→</span></button>
+                  {project.url && <a className="project-live-link" href={project.url} target="_blank" rel="noreferrer">Ver site <span aria-hidden="true">↗</span></a>}
                 </div>
               </div>
               <ProjectVisual project={project} />
@@ -36,14 +36,14 @@ export default function Projects() {
         ))}
       </div>
       {otherProjects.length > 0 && <div className="other-projects">
-        <div className="other-projects-heading"><p className="eyebrow">Também no portfólio</p><p>Outros produtos e sistemas em que participei.</p></div>
+        <div className="other-projects-heading"><p className="eyebrow">Outros projetos</p><p>Não há capturas públicas destes projetos.</p></div>
         <div className="other-projects-list">
           {otherProjects.map((project) => (
             <article className="other-project" key={project.id}>
-              <div><span className="project-number">{project.number}</span><h3>{project.title}</h3><p>{project.short}</p></div>
+              <div><h3>{project.title}</h3><p>{project.short}</p></div>
               <div className="other-project-actions">
-                <button className="text-link" type="button" aria-haspopup="dialog" onClick={() => setSelectedProject(project)}>Ver detalhes <span aria-hidden="true">↗</span></button>
-                {project.url && <a href={project.url} target="_blank" rel="noreferrer" aria-label={`Explorar ${project.title}`}>Visitar <span aria-hidden="true">↗</span></a>}
+                <button className="text-link" type="button" aria-haspopup="dialog" onClick={() => setSelectedProject(project)}>Detalhes <span aria-hidden="true">→</span></button>
+                {project.url && <a href={project.url} target="_blank" rel="noreferrer" aria-label={`Ver site ${project.title}`}>Ver site <span aria-hidden="true">↗</span></a>}
               </div>
             </article>
           ))}

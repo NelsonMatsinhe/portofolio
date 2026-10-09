@@ -16,8 +16,8 @@ function App() {
         <Projects />
         <section id="experience" className="section-shell experience-section section-light">
           <div className="section-heading compact-heading">
-            <Reveal><p className="eyebrow">03 — Experiência</p></Reveal>
-            <Reveal delayMs={60}><h2>Trabalho real, em poucas linhas.</h2></Reveal>
+            <Reveal><p className="eyebrow">Percurso</p></Reveal>
+            <Reveal delayMs={60}><h2>Experiência profissional</h2></Reveal>
           </div>
           <div className="experience-list">
             {experience.map((item, index) => (

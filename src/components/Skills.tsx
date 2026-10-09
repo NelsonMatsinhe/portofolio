@@ -1,22 +1,26 @@
-import { primaryTechnologies, secondaryTechnologyGroups } from "../data";
+import { primaryTechnologyGroups, secondaryTechnologyGroups } from "../data";
 import Reveal from "./Reveal";
 
 export default function Skills() {
   return (
     <section id="stack" className="section-shell section-ink skills-section">
       <div className="skills-heading">
-        <Reveal><p className="eyebrow">04 — Stack</p></Reveal>
-        <Reveal delayMs={60}><h2>As ferramentas por trás do trabalho.</h2></Reveal>
+        <Reveal><p className="eyebrow">Ferramentas</p></Reveal>
+        <Reveal delayMs={60}><h2>Competências técnicas</h2></Reveal>
       </div>
       <Reveal className="primary-stack" delayMs={100}>
-        <p className="stack-caption">Tecnologias principais</p>
-        <ul aria-label="Tecnologias principais">
-          {primaryTechnologies.map((technology) => <li key={technology}>{technology}</li>)}
-        </ul>
+        <div className="primary-stack-groups">
+          {primaryTechnologyGroups.map((group) => (
+            <div className="primary-stack-group" key={group.label}>
+              <h3>{group.label}</h3>
+              <ul>{group.items.map((technology) => <li key={technology}>{technology}</li>)}</ul>
+            </div>
+          ))}
+        </div>
       </Reveal>
       <Reveal className="secondary-stack" delayMs={140}>
         <details>
-          <summary>Ver outras ferramentas e conhecimentos</summary>
+          <summary>Ver outras tecnologias</summary>
           <div className="secondary-stack-groups">
             {secondaryTechnologyGroups.map((group) => (
               <div key={group.label}>

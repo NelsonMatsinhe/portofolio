@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import type { Project } from "../data";
-import ProjectVisual from "./ProjectVisual";
 
 interface ProjectModalProps { project: Project; onClose: () => void; }
 
@@ -41,7 +40,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   return (
     <div className="modal-backdrop" role="presentation" onClick={(event) => { if (event.target === event.currentTarget) onClose(); }}>
       <section ref={dialogRef} className="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" aria-describedby="project-modal-description" tabIndex={-1}>
-        <div className="modal-header"><p className="eyebrow">{project.number} — {project.type}</p><button ref={closeButtonRef} className="modal-close" type="button" onClick={onClose} aria-label="Fechar detalhes do projeto">Fechar <span aria-hidden="true">×</span></button></div>
+        <div className="modal-header"><p className="eyebrow">{project.type}</p><button ref={closeButtonRef} className="modal-close" type="button" onClick={onClose} aria-label="Fechar detalhes do projeto">Fechar <span aria-hidden="true">×</span></button></div>
         <h2 id="project-modal-title">{project.title}</h2>
         <p id="project-modal-description" className="project-modal-description">{project.description}</p>
         {gallery.length ? (
@@ -66,13 +65,13 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               </div>
             )}
           </div>
-        ) : <ProjectVisual project={project} />}
+        ) : null}
         <div className="case-study-grid">
-          <div><span className="case-label">O meu trabalho</span><p>{project.contribution}</p></div>
-          <div><span className="case-label">Funcionalidades</span><ul>{project.features.map((feature) => <li key={feature}>{feature}</li>)}</ul></div>
-          <div><span className="case-label">Tecnologias</span><p>{project.tech.length ? project.tech.join(" · ") : "Ainda não confirmadas."}</p></div>
+          {project.contribution && <div><span className="case-label">Contribuição</span><p>{project.contribution}</p></div>}
+          <div><span className="case-label">Destaques</span><ul>{project.features.map((feature) => <li key={feature}>{feature}</li>)}</ul></div>
+          {project.tech.length > 0 && <div><span className="case-label">Tecnologias</span><p>{project.tech.join(" · ")}</p></div>}
         </div>
-        {project.url && <a className="text-link project-live-link" href={project.url} target="_blank" rel="noreferrer">Visitar plataforma <span aria-hidden="true">↗</span></a>}
+        {project.url && <a className="text-link project-live-link" href={project.url} target="_blank" rel="noreferrer">Ver site <span aria-hidden="true">↗</span></a>}
       </section>
     </div>
   );
