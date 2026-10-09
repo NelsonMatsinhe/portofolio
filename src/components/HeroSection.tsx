@@ -55,7 +55,7 @@ function PortraitFeature({ reducedMotion }: { reducedMotion: boolean | null }) {
       <div className="hero-portrait-frame">
         <m.div className="hero-portrait-image" style={reducedMotion ? undefined : { x: imageX, y: imageY }}>
           <img
-            src="/portofolio/Nelson%20Matsinhe%20Programador.webp"
+            src="/portfolio/Nelson%20Matsinhe%20Programador.webp"
             alt="Nelson Matsinhe, desenvolvedor Full-Stack"
             width="4162"
             height="3264"

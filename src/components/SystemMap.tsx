@@ -127,7 +127,7 @@ export default function SystemMap({ reducedMotion }: SystemMapProps) {
         transition={{ type: "spring", stiffness: 150, damping: 13, delay: motionDisabled ? 0 : 0.75 }}
         style={{ transformPerspective: 400 }}
       >
-        <img src="/portofolio/Nelson%20Matsinhe%20Programador.webp" alt="" width="4162" height="3264" />
+        <img src="/portfolio/Nelson%20Matsinhe%20Programador.webp" alt="" width="4162" height="3264" />
       </m.div>
       <div className="network-footnote">Interfaces / lógica / entrega</div>
     </m.div>

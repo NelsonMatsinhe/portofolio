@@ -33,7 +33,7 @@ function App() {
               </Reveal>
             ))}
           </div>
-          <a className="text-link" href="/portofolio/cv/Nelson_Matsinhe_CV.pdf" download>Descarregar CV <span aria-hidden="true">↓</span></a>
+          <a className="text-link" href="/portfolio/cv/Nelson_Matsinhe_CV.pdf" download>Descarregar CV <span aria-hidden="true">↓</span></a>
         </section>
         <About />
         <WorkProcess />
