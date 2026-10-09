@@ -5,39 +5,36 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Reveal from "./components/Reveal";
-import Authority from "./components/Authority";
-import Services from "./components/Services";
-import WorkProcess from "./components/WorkProcess";
-import WhyWork from "./components/WhyWork";
 import { experience } from "./data";
 
 function App() {
   return (
     <div id="page">
-      <a className="skip-link" href="#main-content">Skip to content</a>
+      <a className="skip-link" href="#main-content">Avançar para o conteúdo</a>
       <main id="main-content">
         <HeroSection />
-        <Authority />
         <Projects />
-        <Services />
-        <Skills />
         <section id="experience" className="section-shell experience-section section-light">
           <div className="section-heading compact-heading">
-            <Reveal><p className="eyebrow">05 — Contexto</p></Reveal>
-            <Reveal delayMs={60}><h2>Onde tenho feito este trabalho.</h2></Reveal>
+            <Reveal><p className="eyebrow">03 — Experiência</p></Reveal>
+            <Reveal delayMs={60}><h2>Trabalho real, em poucas linhas.</h2></Reveal>
           </div>
           <div className="experience-list">
             {experience.map((item, index) => (
               <Reveal key={item.company} delayMs={index * 40}>
-                <div className="experience-row"><strong>{item.company}</strong><span>{item.role}</span><time>{item.period}</time></div>
+                <article className={"experience-card" + (index === 0 ? " experience-card-featured" : "")}>
+                  <div className="experience-card-heading">
+                    <div><h3>{item.company}</h3><p className="experience-role">{item.role}</p></div>
+                    <p className="experience-period">{item.period}</p>
+                  </div>
+                  <p className="experience-summary">{item.summary}</p>
+                </article>
               </Reveal>
             ))}
           </div>
-          <a className="text-link" href="/portfolio/cv/Nelson_Matsinhe_CV.pdf" download>Descarregar CV <span aria-hidden="true">↓</span></a>
         </section>
+        <Skills />
         <About />
-        <WorkProcess />
-        <WhyWork />
         <Contact />
       </main>
       <Footer />

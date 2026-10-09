@@ -4,13 +4,13 @@ interface ProjectVisualProps { project: Project; }
 
 export default function ProjectVisual({ project }: ProjectVisualProps) {
   return (
-    <div className={"project-visual project-visual-" + project.visual} data-asset-dir={project.assetDir} aria-label={"Representação visual de " + project.title}>
+    <div className={"project-visual project-visual-" + project.visual} data-asset-dir={project.assetDir}>
       <div className="visual-topline"><span>{project.type}</span><span>{project.number} / 06</span></div>
-      {project.image ? <img className="project-screenshot" src={project.image} alt={"Ecrã de " + project.title} loading="lazy" /> : (
-        <div className="visual-frame" aria-hidden="true">
-          <div className="visual-window-bar"><span /><span /><span /></div>
-          <div className="visual-lines"><i /><i /><i /><i /></div>
+      {project.image ? <img className="project-screenshot" src={project.image} alt={"Captura de ecrã do projecto " + project.title} width={project.id === "precos-baixos" ? 1284 : 1356} height={project.id === "precos-baixos" ? 523 : 603} loading="lazy" decoding="async" /> : (
+        <div className="visual-unavailable">
+          <span>{project.number} / projecto</span>
           <strong>{project.title}</strong>
+          <p>Sem captura pública disponível</p>
         </div>
       )}
     </div>

@@ -4,13 +4,13 @@ import { siteInfo } from "../data";
 
 const navigation = [
   { href: "#work", label: "Projetos" },
-  { href: "#services", label: "Serviços" },
   { href: "#experience", label: "Experiência" },
+  { href: "#stack", label: "Stack" },
   { href: "#about", label: "Sobre" },
   { href: "#contact", label: "Contacto" },
 ];
 
-const technologies = ["Laravel", "React", "PHP", "TypeScript"];
+const technologies = ["Laravel", "React", "PHP", "JavaScript"];
 
 const entrance = {
   hidden: { opacity: 0, y: 18 },
@@ -65,8 +65,8 @@ function PortraitFeature({ reducedMotion }: { reducedMotion: boolean | null }) {
         <span className="hero-portrait-corner" aria-hidden="true">NM<span> / 01</span></span>
       </div>
       <div className="hero-portrait-caption">
-        <span>FULL-STACK DEVELOPER</span>
-        <span>Laravel · React · PHP · TypeScript</span>
+        <span>DESENVOLVEDOR FULL-STACK</span>
+        <span>Laravel · React · PHP · JavaScript</span>
       </div>
     </m.article>
   );
@@ -78,7 +78,7 @@ export default function HeroSection() {
 
   return (
     <LazyMotion features={domAnimation}>
-    <section id="top" className="hero-modern relative overflow-hidden bg-[#fcfbf9] text-slate-900">
+    <section id="top" className="hero-modern relative overflow-hidden bg-[#fbfaf7] text-slate-900">
       <header className="relative z-20 border-b border-stone-300/80">
         <nav className="mx-auto flex min-h-[72px] max-w-[1240px] items-center justify-between gap-6 px-5 sm:px-8" aria-label="Navegação principal">
           <a href="#top" className="shrink-0 text-sm font-bold tracking-[-0.02em] text-slate-900" onClick={() => setMenuOpen(false)}>
@@ -91,7 +91,7 @@ export default function HeroSection() {
                 {item.label}
               </a>
             ))}
-            <a href="#contact" className="border border-[#963a28] px-3 py-2 text-sm font-bold text-[#963a28] transition-colors hover:bg-[#963a28] hover:text-[#fcfbf9]">
+            <a href="#contact" className="border border-[#7d2f20] px-3 py-2 text-sm font-bold text-[#7d2f20] transition-colors hover:bg-[#7d2f20] hover:text-[#fbfaf7]">
               Falar comigo <span aria-hidden="true">↗</span>
             </a>
           </div>
@@ -108,18 +108,18 @@ export default function HeroSection() {
           </button>
         </nav>
 
-        <div id="hero-mobile-navigation" className={"border-t border-stone-300 bg-[#fcfbf9] px-5 py-4 lg:hidden " + (menuOpen ? "block" : "hidden")}>
+        <nav id="hero-mobile-navigation" aria-label="Navegação móvel" className={"border-t border-stone-300 bg-[#fbfaf7] px-5 py-4 lg:hidden " + (menuOpen ? "block" : "hidden")}>
           <div className="flex flex-col gap-4">
             {navigation.map((item) => (
               <a key={item.href} href={item.href} className="py-2 text-sm text-stone-700" onClick={() => setMenuOpen(false)}>
                 {item.label}
               </a>
             ))}
-            <a href="#contact" className="w-fit border border-[#963a28] px-3 py-2 text-sm font-bold text-[#963a28]" onClick={() => setMenuOpen(false)}>
+            <a href="#contact" className="w-fit border border-[#7d2f20] px-3 py-2 text-sm font-bold text-[#7d2f20]" onClick={() => setMenuOpen(false)}>
               Falar comigo ↗
             </a>
           </div>
-        </div>
+        </nav>
       </header>
 
       <div className="hero-main-grid mx-auto grid max-w-[1240px] grid-cols-1 gap-12 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-12 lg:gap-12 lg:py-28">
@@ -130,8 +130,8 @@ export default function HeroSection() {
           animate="visible"
         >
           <m.p variants={entrance} transition={{ duration: reducedMotion ? 0 : 0.65 }} className="hero-kicker mb-7 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-slate-800">
-            <span className="hero-kicker-line inline-block h-px w-10 bg-[#963a28]" aria-hidden="true" />
-            Full-Stack Developer <span className="hero-kicker-status">Maputo, Moçambique</span>
+            <span className="hero-kicker-line inline-block h-px w-10 bg-[#7d2f20]" aria-hidden="true" />
+            Desenvolvedor Full-Stack <span className="hero-kicker-status">Maputo, Moçambique</span>
           </m.p>
           <h1 className="hero-title font-serif font-normal text-slate-950">
             <span className="hero-name-clip block">
@@ -152,20 +152,17 @@ export default function HeroSection() {
             </span>
           </h1>
           <m.p variants={entrance} transition={{ duration: reducedMotion ? 0 : 0.7 }} className="hero-lede-modern mt-10 max-w-2xl font-serif text-[clamp(1.45rem,2.7vw,2.3rem)] leading-[1.13] tracking-[-0.035em]">
-            Construo <span className="hero-lede-emphasis">plataformas digitais</span> que transformam operações complexas em produtos simples, rápidos e úteis.
-          </m.p>
-          <m.p variants={entrance} transition={{ duration: reducedMotion ? 0 : 0.7 }} className="hero-summary-modern mt-5 max-w-xl text-base leading-7 text-slate-700">
-            Trabalho no frontend e no backend, criando plataformas web, dashboards e sistemas internos para empresas e equipas.
+            Construo <span className="hero-lede-emphasis">plataformas digitais</span> que tornam operações complexas mais simples e úteis.
           </m.p>
           <m.div variants={entrance} transition={{ duration: reducedMotion ? 0 : 0.7 }} className="hero-tech-list mt-7 flex flex-wrap gap-2">
             <span className="hero-tech-label">Stack principal</span>
             <span className="hero-tech-values">{technologies.map((technology, index) => <span key={technology}>{index > 0 && <i aria-hidden="true">·</i>}{technology}</span>)}</span>
           </m.div>
           <m.div variants={entrance} transition={{ duration: reducedMotion ? 0 : 0.7 }} className="hero-actions-modern mt-9 flex flex-wrap gap-5">
-            <a href="#work" className="group inline-flex items-center gap-3 bg-slate-950 px-5 py-3 text-sm font-bold text-[#fcfbf9] transition hover:scale-[1.02] hover:bg-[#963a28] active:scale-[0.98]">
+            <a href="#work" className="group inline-flex items-center gap-3 bg-slate-950 px-5 py-3 text-sm font-bold text-[#fbfaf7] transition hover:scale-[1.02] hover:bg-[#7d2f20] active:scale-[0.98]">
               Ver projetos <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">↗</span>
             </a>
-            <a href="#contact" className="group inline-flex items-center gap-3 border border-stone-500 px-5 py-3 text-sm font-bold text-slate-900 transition hover:scale-[1.02] hover:border-[#963a28] hover:text-[#963a28] active:scale-[0.98]">
+            <a href="#contact" className="group inline-flex items-center gap-3 border border-stone-500 px-5 py-3 text-sm font-bold text-slate-900 transition hover:scale-[1.02] hover:border-[#7d2f20] hover:text-[#7d2f20] active:scale-[0.98]">
               Falar sobre um projeto <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">↗</span>
             </a>
           </m.div>
@@ -183,7 +180,7 @@ export default function HeroSection() {
 
       <div className="mx-auto flex max-w-[1240px] flex-wrap justify-between gap-4 border-t border-stone-400 px-5 py-5 text-xs font-bold uppercase tracking-[0.12em] text-slate-700 sm:px-8">
         <span>Maputo, Moçambique</span>
-        <a href="#work" className="transition-colors hover:text-[#963a28]">Scroll para explorar ↓</a>
+        <a href="#work" className="transition-colors hover:text-[#7d2f20]">Scroll para explorar ↓</a>
         <span>01 / 06</span>
       </div>
     </section>
